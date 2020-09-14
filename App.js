@@ -30,16 +30,9 @@ const App = () => {
 }
 
 const styles = StyleSheet.create({
-  modal: {
-    height: '80vh',
-    width: '100vw',
-    backgroundColor: 'pink',
-    position: 'fixed',
-    bottom: '-80vh'
-  },
   page: {
-    height: '100vh',
-    width: '100vw',
+    height: '100%',
+    width: '100%',
     backgroundColor: 'grey',
   },
   footer: {
