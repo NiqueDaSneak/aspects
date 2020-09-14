@@ -1,21 +1,59 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useRef} from 'react';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  TouchableOpacity, 
+  Animated, 
+  Switch,
+  TextInput,
+} from 'react-native';
+import * as Animatable from 'react-native-animatable';
+import Modal from './src/components/Modal'
+import Footer from './src/components/Footer';
+import { ModalContext } from './src/state/modal.context';
+import { useModal } from './src/hooks/modal.hook';
 
-export default function App() {
+
+const App = () => {
+
+  const modal = useModal()
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ModalContext.Provider value={modal}>
+      <View style={styles.page}>
+      <Footer />
+        <Modal />
+      </View>
+    </ModalContext.Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  modal: {
+    height: '80vh',
+    width: '100vw',
+    backgroundColor: 'pink',
+    position: 'fixed',
+    bottom: '-80vh'
   },
+  page: {
+    height: '100vh',
+    width: '100vw',
+    backgroundColor: 'grey',
+  },
+  footer: {
+    height: '10vh',
+    width: '100vw',
+    backgroundColor: 'green',
+    position: 'fixed',
+    bottom: 0
+  },
+  plus: {
+    fontSize: '30pt',
+    color: 'white',
+    textAlign: 'center'
+  }
 });
+
+export default App
