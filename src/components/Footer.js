@@ -18,8 +18,6 @@ const Footer = () => {
   // const [modalActive, setModal] = useState(false)
 
   const pressHandler = () => {
-    console.log('pressed')
-    // setModal(!modalActive)
     openModal()
   }
 

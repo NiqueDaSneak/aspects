@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "expo": "~38.0.9",
+    "expo-cli": "^3.27.4",
     "expo-splash-screen": "^0.5.0",
     "expo-status-bar": "^1.0.0",
     "expo-updates": "~0.2.10",
@@ -25,6 +26,8 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "babel-jest": "~25.2.6",
+    "eslint": "^7.9.0",
+    "eslint-plugin-react": "^7.20.6",
     "jest": "~25.2.6",
     "react-test-renderer": "~16.11.0"
   },

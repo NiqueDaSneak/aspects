@@ -22,7 +22,7 @@ const App = () => {
   return (
     <ModalContext.Provider value={modal}>
       <View style={styles.page}>
-      <Footer />
+        <Footer />
         <Modal />
       </View>
     </ModalContext.Provider>
