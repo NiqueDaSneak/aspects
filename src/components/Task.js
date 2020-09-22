@@ -15,23 +15,25 @@ const Task = ({style, text}) => {
 
 const styles = StyleSheet.create({
     containerStyle: {
-        height: '16vh', 
-        width: '44vw', 
+        // height: '100%', 
+        // width: '50%', 
         borderColor: 'gray',
         borderWidth: 1, 
-        borderRadius: '4vw',
+        borderRadius: 4,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-around'
+        // paddingLeft: '5%'
     },
     taskBtn: {
-        fontSize: '30pt',
-        marginLeft: '30%',
+        fontSize: theme.fonts.sizes.large,
+        // marginLeft: '10%',
     },
     taskText: {
         width: '66%',
-        marginLeft: '10%',
-        fontSize: theme.fonts.sizes.xsmall
+        // marginLeft: '0%',
+        fontSize: theme.fonts.sizes.small
     } 
 })
 export default Task

@@ -1,18 +1,19 @@
 export const theme = {
-  layout: {
-    flex: {
-      row: {
-        display: 'flex',
-        flexDirection: 'row'
-      }
+    layout: {
+        flex: {
+            row: {
+                display: 'flex',
+                flexDirection: 'row'
+            }
+        }
+    },
+    fonts: {
+        sizes: {
+            xsmall: 10,
+            small: 15,
+            medium: 30,
+            large: 40,
+            xlarge: 50
+        }
     }
-  },
-  fonts: {
-    sizes: {
-      xsmall: '10pt',
-      small: '12pt',
-      medium: '16pt',
-      large: '20pt'
-    }
-  }
 }
