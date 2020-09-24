@@ -1,39 +1,42 @@
 import React from 'react'
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native'
-import {theme} from '../assets/utils'
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { theme } from '../assets/utils'
 
-const Task = ({style, text}) => {
+const Task = ({ style, text }) => {
+
     return(
-        <View style={[styles.containerStyle, style]}>
-            <TouchableOpacity onPress={() => console.log('pressed')}>
+        <TouchableOpacity key={text} style={styles.containerStyle} onPress={() => console.log('pressed')}>
+            <View>
                 <Text style={styles.taskBtn}>+</Text>
-            </TouchableOpacity>
-            <Text style={styles.taskText}>{text}</Text>
-        </View>
+            </View>
+            <View style={styles.taskText}>
+                <Text>{text}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     containerStyle: {
-        // height: '100%', 
-        // width: '50%', 
+        height: '100%',
+        marginRight: 10,
+        width: 200,
+        paddingLeft: 10,
+        paddingRight: 10,
         borderColor: 'gray',
         borderWidth: 1, 
-        borderRadius: 4,
+        borderRadius: 20,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'
-        // paddingLeft: '5%'
     },
     taskBtn: {
         fontSize: theme.fonts.sizes.large,
-        // marginLeft: '10%',
     },
     taskText: {
-        width: '66%',
-        // marginLeft: '0%',
+        width: 100,
         fontSize: theme.fonts.sizes.small
-    } 
+    }
 })
 export default Task

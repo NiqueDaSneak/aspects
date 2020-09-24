@@ -1,35 +1,30 @@
-import React, {useState, useRef, useContext} from 'react'
+import React, { useState, useContext } from 'react'
 import { 
     StyleSheet, 
     Text, 
     View, 
     TouchableOpacity, 
-    Animated, 
     Switch,
     TextInput,
     Button,
     KeyboardAvoidingView,
-    ScrollView,
-    Dimensions
+    FlatList,
 } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import Animations from '../assets/animations'
-import {ModalContext} from '../state/modal.context'
-import {theme} from '../assets/utils'
-import Task from './Task'
-import { FlatList } from 'react-native-gesture-handler'
+import { ModalContext } from '../state/modal.context'
+import { theme } from '../assets/utils'
+import Task from './Task'   
 
 const Modal = () => {
 
-    const {modalActive} = useContext(ModalContext)
+    const { modalActive } = useContext(ModalContext)
 
     const [aspectTitle, setAspectTitle] = useState('Useless Placeholder')
     const [aspectType, setAspectType] = useState(false)
     const [importance, setImportance] = useState('')
     const [taskCreatorInputValue, setTaskCreatorInputValue] = useState('')
     const [tasks, setTasks] = useState([])
-
-    // const taskCreatorRef = useRef(null)
 
     const toggleSwitch = () => setAspectType(previousState => !previousState)
 
@@ -45,44 +40,27 @@ const Modal = () => {
         console.log('tasks', tasks)
     }
 
-    const listData = [
-        {
-            text: 'This is a task text.'
-        },
-        {
-            text: 'This is a task text.'
-        },
-        {
-            text: 'This is a task text.'
-        },
-        {
-            text: 'This is a task text.'
-        },
-        {
-            text: 'This is a task text.'
-        }
-    ]
-
     return(
         <Animatable.View animation={ modalActive ? Animations.slideUp : null} style={styles.modal}>
             <KeyboardAvoidingView 
                 behavior="padding"
                 style={styles.newAspectModal}
             >
-                <Text style={{ textAlign: 'center', fontSize: theme.fonts.sizes.large}}>Add New Aspect</Text>
-                <Text style={{fontSize: theme.fonts.sizes.small}}>Give Your Aspect A Title</Text>
+                <Text style={{ textAlign: 'center', fontSize: theme.fonts.sizes.large }}>Add New Aspect</Text>
+                <Text style={{ fontSize: theme.fonts.sizes.small }}>Give Your Aspect A Title</Text>
                 <TextInput
+                    multiline={true}
+                    blurOnSubmit
                     keyboardAppearance={'dark'}
                     returnKeyType={'done'}          
-                    clearTextOnFocus
+                    // clearTextOnFocus
                     style={styles.aspectTitleInput}
-                    onSubmitEditing={text => setAspectTitle(text)}
-                    // value={aspectTitle}
+                    onChangeText={text => setAspectTitle(text)}
                     placeholder="Useless Placeholder"
                 /> 
-                <Text style={{fontSize: theme.fonts.sizes.small}}>Is this a short term or long term consideration?</Text>
+                <Text style={{ fontSize: theme.fonts.sizes.small }}>Is this a short term or long term consideration?</Text>
                 <View style={styles.swtichContainer}>
-                    <Text style={{fontSize: theme.fonts.sizes.small}}>Short Term</Text>
+                    <Text style={{ fontSize: theme.fonts.sizes.small }}>Short Term</Text>
                     <Switch
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
                         thumbColor={aspectType ? '#f5dd4b' : '#f4f3f4'}
@@ -90,66 +68,45 @@ const Modal = () => {
                         onValueChange={toggleSwitch}
                         value={aspectType}
                     />
-                    <Text style={{fontSize: theme.fonts.sizes.small}}>Long Term</Text>
+                    <Text style={{ fontSize: theme.fonts.sizes.small }}>Long Term</Text>
                 </View>
-                <Text style={{fontSize: theme.fonts.sizes.small}}>Why is this important to you?</Text>
+                <Text style={{ fontSize: theme.fonts.sizes.small }}>Why is this important to you?</Text>
                 <TextInput
                     keyboardAppearance={'dark'}
-                    blurOnSubmit={true}
+                    blurOnSubmit
                     returnKeyType={'done'}         
-                    multiline = {true}
-                    numberOfLines = {4}
+                    multiline={true}
+                    numberOfLines={4}
                     style={styles.importanceInput}
-                    onSubmitEditing={text => setImportance(text)}
-                    // value={importance}
+                    onChangeText={text => setImportance(text)}
                 />
-                <Text style={{fontSize: theme.fonts.sizes.small}}>What tasks will address this?</Text>
+                <Text style={{ fontSize: theme.fonts.sizes.small }}>What tasks will address this?</Text>
                 <View style={styles.newTaskContainer}>
                     <TextInput
-                        // ref={taskCreatorRef}
+                        multiline={true}
+                        blurOnSubmit={true}
                         keyboardAppearance={'dark'}
                         returnKeyType={'done'}                             
                         maxLength={54}
                         style={styles.taskCreatorInput}
                         onChangeText={(text) => {
-                            console.log(text)
                             setTaskCreatorInputValue(text)
                         }}   
                         value={taskCreatorInputValue}
                     />
                     <View style={styles.newTaskBtn}>
                         <TouchableOpacity onPress={() => addNewTask()}>
-                            <Text style={{ color: 'white', fontSize: theme.fonts.sizes.medium}}>+</Text>
+                            <Text style={{ color: 'white', fontSize: theme.fonts.sizes.medium }}>+</Text>
                         </TouchableOpacity> 
                     </View>
                 </View>
-                <View style={{width: '100%', height: 60, backgroundColor: 'red'}}>
+                <View style={{ width: '100%', height: '15%' }}>
                     <FlatList 
                         keyExtractor={(item, index) => `${index}`}
                         horizontal
                         data={tasks}
-                        // data={listData}
-                        renderItem={({item: task}) => (
-                            <View 
-                                style={{
-                                    // width: 300,
-                                    paddingLeft: 40,
-                                    paddingRight: 40,
-                                    borderColor: 'gray',
-                                    borderWidth: 1, 
-                                    borderRadius: 4,
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    justifyContent: 'space-around'
-                                }} 
-                                key={task.text}
-                            >
-                                <TouchableOpacity onPress={() => console.log('pressed')}>
-                                    <Text style={{fontSize: theme.fonts.sizes.large}}>+</Text>
-                                </TouchableOpacity>
-                                <Text style={styles.taskText}>{task}</Text>
-                            </View>
+                        renderItem={({ item: task }) => (
+                            <Task key={task} text={task} />
                         )}
                     />
                 </View>
@@ -162,9 +119,6 @@ const Modal = () => {
 const styles = StyleSheet.create({
     newTaskContainer: {
         ...theme.layout.flex.row,  
-        // backgroundColor: 'pink', 
-        // height: '5%',
-        // marginTop: '2%', 
         alignItems: 'center', 
         justifyContent: 'space-between'
     },
@@ -176,8 +130,6 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     swtichContainer: {       
-        // marginTop: '4%',
-        // marginBottom: '4%',
         display: 'flex', 
         flexDirection: 'row', 
         justifyContent: 'space-evenly',
@@ -190,13 +142,11 @@ const styles = StyleSheet.create({
         borderWidth: 1, 
         width: '80%',
         paddingLeft: '2%',
-        height: 40,
-
+        height: 30,
     },
     importanceInput: { 
         borderRadius: 10, 
         height: 80, 
-        // marginTop: '2%', 
         fontSize: theme.fonts.sizes.small, 
         borderColor: 'gray', 
         borderWidth: 1,
@@ -204,9 +154,8 @@ const styles = StyleSheet.create({
     },
     aspectTitleInput: { 
         borderRadius: 10, 
-        // marginTop: '2%', 
         fontSize: theme.fonts.sizes.small, 
-        height: 40,
+        height: 30,
         borderColor: 'gray', 
         borderWidth: 1 ,
         paddingLeft: '2%',
@@ -225,7 +174,6 @@ const styles = StyleSheet.create({
         borderRadius: 10, 
     },
     modal: {
-        // flex: 1,
         paddingRight: '4%',
         paddingLeft: '4%',
         height: '100%',
@@ -233,9 +181,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'lightgrey',
         position: 'absolute',
         bottom: '-100%',
-        // color: 'white',
         display: 'flex',
-        // justifyContent: 'space-between'
         overflow: 'scroll'
     },
 })

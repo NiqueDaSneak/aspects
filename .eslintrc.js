@@ -33,6 +33,11 @@ module.exports = {
         'semi': [
             'error',
             'never'
+        ],
+        'object-curly-spacing': [
+            2, 
+            'always'
         ]
+
     }
 }

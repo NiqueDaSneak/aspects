@@ -1,21 +1,17 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { 
     StyleSheet, 
     Text, 
     View, 
     TouchableOpacity, 
-    Animated, 
-    Switch,
-    TextInput,
 } from 'react-native'
-import * as Animatable from 'react-native-animatable'
-import {ModalContext} from '../state/modal.context'
+import { ModalContext } from '../state/modal.context'
 import { theme } from '../assets/utils'
 
 
 const Footer = () => {
   
-    const {openModal} = useContext(ModalContext)
+    const { openModal } = useContext(ModalContext)
     // const [modalActive, setModal] = useState(false)
 
     const pressHandler = () => {

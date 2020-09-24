@@ -1,7 +1,7 @@
-import React, {createContext} from 'react'
+import React, { createContext } from 'react'
 
 export const ModalContext = createContext({
-  modalActive: false,
-  openModal: () => {},
+    modalActive: false,
+    openModal: () => {},
 })
 
