@@ -1,17 +1,21 @@
 import React, { useState, useCallback } from 'react'
-import ModalContext from '../state/modal.context'
+// import ModalContext from '../state/modal.context'
 
 export const useModal = () => {
-    const [modalActive, setModalActive] = useState(false)
+  const [modalActive, setModalActive] = useState(false)
 
-    const openModal = useCallback(() => {
-        setModalActive(true)
-    },
-    [],
-    )
+  const openModal = useCallback(() => {
+    console.log('in hook')
+    console.log('before set', modalActive)
+    setModalActive(true)
+    console.log('after set', modalActive)
+  },
+  [],
+  )
 
-    return {
-        modalActive,
-        openModal
-    }
+  return {
+    modalActive,
+    openModal
+
+  }
 }
