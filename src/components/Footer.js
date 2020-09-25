@@ -1,28 +1,18 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { 
   StyleSheet, 
   Text, 
   View, 
   TouchableOpacity, 
 } from 'react-native'
-// import { ModalContext } from '../state/modal.context'
 import { theme } from '../assets/utils'
-import { useModal } from '../hooks/modal.hook'
 
 
-const Footer = ({openModal}) => {
-  // const  { modalActive, openModal } = useModal()
-  // const { openModal } = useContext(ModalContext)
-  // const [modalActive, setModal] = useState(false)
-
-  const pressHandler = () => {
-    // console.log('modal state in footer', modalActive)
-    // openModal()
-  }
+const Footer = ({ openModal }) => {
 
   return(
     <View style={styles.footer}>
-      <TouchableOpacity onPress={() => openModal()}>
+      <TouchableOpacity onPress={() => openModal('ADD_NEW_ASPECT')}>
         <Text style={styles.plus}>+</Text>
       </TouchableOpacity>
     </View>

@@ -1,17 +1,16 @@
 import React, { useState, useCallback } from 'react'
-import AspectsContext from '../state/aspects.context'
 
 export const useAspects = () => {
   const [aspects, setAspects] = useState([])
 
-  // const openModal = useCallback(() => {
-  //   setAspects(true)
-  // },
-  // [],
-  // )
+  const addNewAspect = useCallback((newAspect) => {
+    setAspects(oldAspects => setAspects([...oldAspects, newAspect]))
+  },
+  [],
+  )
 
   return {
     aspects: aspects,
-    // openModal
+    addNewAspect: addNewAspect
   }
 }

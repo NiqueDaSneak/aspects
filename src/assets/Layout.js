@@ -1,16 +1,16 @@
 import React from 'react'
 import Footer from '../components/Footer'
-import Modal from '../components/Modal'
+import ModalConductor from '../components/Modals/ModalConductor'
 import { useModal } from '../hooks/modal.hook'
 
 const Layout = ({ children }) => {
-    const  { modalActive, openModal } = useModal()
+  const  { modalActive, openModal, modalType } = useModal()
 
   return(
     <>
       {children}
-      <Footer openModal={() => openModal()} />
-      <Modal modalActive={modalActive}/>
+      <Footer openModal={(type) => openModal(type)} />
+      <ModalConductor modalType={modalType} modalActive={modalActive} />
     </>
   )
 }
