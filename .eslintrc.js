@@ -43,6 +43,7 @@ module.exports = {
       'ObjectPattern': {
         'multiline': true 
       }
-    }]
+    }],
+    'object-property-newline': 'error'
   }
 }

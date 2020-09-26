@@ -23,7 +23,7 @@ const AspectsContainer = () => {
             numColumns={Math.ceil(aspects.length / 2)}
             data={aspects}
             renderItem={({ item: aspect }) => (
-              <Card />
+              <Card aspect={aspect}/>
             )}
           />
         </ScrollView>

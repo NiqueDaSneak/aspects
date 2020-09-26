@@ -47,30 +47,47 @@ const AddNewAspect = ({ modalActive }) => {
       behavior="padding"
       style={styles.newAspectModal}
     >
-      <Text style={{ textAlign: 'center', fontSize: theme.fonts.sizes.large }}>Add New Aspect</Text>
-      <Text style={{ fontSize: theme.fonts.sizes.small }}>Give Your Aspect A Title</Text>
+      <Text style={{
+        textAlign: 'center',
+        fontSize: theme.fonts.sizes.large 
+      }}>Add New Aspect</Text>
+      <Text style={{
+        fontSize: theme.fonts.sizes.small 
+      }}>Give Your Aspect A Title</Text>
       <TextInput
         multiline={true}
         blurOnSubmit
+        maxLength={41}
         keyboardAppearance={'dark'}
         returnKeyType={'done'}          
         style={styles.aspectTitleInput}
         onChangeText={text => setAspectTitle(text)}
         placeholder="Useless Placeholder"
       /> 
-      <Text style={{ fontSize: theme.fonts.sizes.small }}>Is this a short term or long term consideration?</Text>
+      <Text style={{
+        fontSize: theme.fonts.sizes.small 
+      }}>Is this a short term or long term consideration?</Text>
       <View style={styles.swtichContainer}>
-        <Text style={{ fontSize: theme.fonts.sizes.small }}>Short Term</Text>
+        <Text style={{
+          fontSize: theme.fonts.sizes.small 
+        }}>Short Term</Text>
         <Switch
-          trackColor={{ false: '#767577', true: '#81b0ff' }}
+          trackColor={{
+            false: '#767577',
+            true: '#81b0ff' 
+          }}
           thumbColor={aspectType ? '#f5dd4b' : '#f4f3f4'}
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
           value={aspectType}
         />
-        <Text style={{ fontSize: theme.fonts.sizes.small }}>Long Term</Text>
+        <Text style={{
+          fontSize: theme.fonts.sizes.small 
+        }}>Long Term</Text>
       </View>
-      <Text style={{ fontSize: theme.fonts.sizes.small }}>Why is this important to you?</Text>
+      <Text style={{
+        fontSize: theme.fonts.sizes.small 
+      }}>Why is this important to you?</Text>
       <TextInput
         keyboardAppearance={'dark'}
         blurOnSubmit
@@ -80,7 +97,9 @@ const AddNewAspect = ({ modalActive }) => {
         style={styles.importanceInput}
         onChangeText={text => setImportance(text)}
       />
-      <Text style={{ fontSize: theme.fonts.sizes.small }}>What tasks will address this?</Text>
+      <Text style={{
+        fontSize: theme.fonts.sizes.small 
+      }}>What tasks will address this?</Text>
       <View style={styles.newTaskContainer}>
         <TextInput
           multiline={true}
@@ -96,11 +115,17 @@ const AddNewAspect = ({ modalActive }) => {
         />
         <View style={styles.newTaskBtn}>
           <TouchableOpacity onPress={() => addNewTask()}>
-            <Text style={{ color: 'white', fontSize: theme.fonts.sizes.medium }}>+</Text>
+            <Text style={{
+              color: 'white',
+              fontSize: theme.fonts.sizes.medium 
+            }}>+</Text>
           </TouchableOpacity> 
         </View>
       </View>
-      <View style={{ width: '100%', height: '15%' }}>
+      <View style={{
+        width: '100%',
+        height: '15%' 
+      }}>
         <FlatList 
           keyExtractor={(item, index) => `${index}`}
           horizontal

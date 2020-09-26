@@ -2,14 +2,19 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { theme } from '../assets/utils'
 
-const Card = ({ aspectTitle }) => {
+const Card = ({ aspect }) => {
+  console.log(aspect)
   return(
     <View style={styles.card}>
       <View style={styles.content}>
 
       </View>
       <View style={styles.titleContainer}>
-        <Text style={{fontSize: theme.fonts.sizes.small, color: 'red', textAlign: 'center' }}>This is the title at its longest possible</Text>
+        <Text style={{
+          fontSize: theme.fonts.sizes.small,
+          color: 'red',
+          textAlign: 'center' 
+        }}>{aspect.title}</Text>
       </View>
     </View>
   )
