@@ -10,15 +10,15 @@ export const theme = {
   fonts: {
     types: {
       heading: {
-        fontSize: theme.fonts.sizes.medium, 
+        fontSize: 30, 
         fontWeight: 'bold'
       }
     },
     sizes: {
       xsmall: 10,
       small: 15,
-      medium: 30,
-      large: 40,
+      medium: 20,
+      large: 30,
       xlarge: 50
     }
   }
