@@ -8,6 +8,12 @@ export const theme = {
     }
   },
   fonts: {
+    types: {
+      heading: {
+        fontSize: theme.fonts.sizes.medium, 
+        fontWeight: 'bold'
+      }
+    },
     sizes: {
       xsmall: 10,
       small: 15,
