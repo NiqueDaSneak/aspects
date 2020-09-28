@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, ScrollView } from 'react-native'
 import AspectsContainer from '../components/AspectsContainer'
+import LongTasksContainer from '../components/LongTasksContainer'
+import { useAspects } from '../hooks/aspects.hook'
 
 const Hub = () => {
+
   return(
     <ScrollView style={styles.page}>
       <AspectsContainer />
       {/* <View style={styles.aspectsContainer}>
         
       </View> */}
+      <LongTasksContainer />
       <View style={styles.shortTasks}>
-
-      </View>
-      <View style={styles.longTasks}>
 
       </View>
     </ScrollView>

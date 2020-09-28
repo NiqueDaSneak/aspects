@@ -5,7 +5,7 @@ import { theme } from '../assets/utils'
 const Task = ({ style, text }) => {
 
   return(
-    <TouchableOpacity key={text} style={styles.containerStyle} onPress={() => console.log('pressed')}>
+    <TouchableOpacity key={text} style={[styles.containerStyle, style]} onPress={() => console.log('pressed')}>
       <View>
         <Text style={styles.taskBtn}>+</Text>
       </View>
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   containerStyle: {
     height: '100%',
     marginRight: 10,
+    marginBottom: 10,
     width: 200,
     paddingLeft: 10,
     paddingRight: 10,

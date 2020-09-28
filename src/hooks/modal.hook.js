@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 
 export const useModal = () => {
   const [modalActive, setModalActive] = useState(false)
-  const [modaltype, setModalType] = useState()
+  const [modalType, setModalType] = useState()
 
   const openModal = useCallback((type) => {
     setModalType(type)
@@ -22,6 +22,6 @@ export const useModal = () => {
     modalActive,
     openModal,
     closeModal,
-    modaltype
+    modalType
   }
 }

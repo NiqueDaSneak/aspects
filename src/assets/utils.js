@@ -12,6 +12,10 @@ export const theme = {
       heading: {
         fontSize: 30, 
         fontWeight: 'bold'
+      },
+      subHeading: {
+        fontSize: 20, 
+        fontWeight: 'bold'
       }
     },
     sizes: {

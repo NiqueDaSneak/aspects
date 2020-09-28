@@ -1,30 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, FlatList } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
 import { useAspects } from '../hooks/aspects.hook'
 import Card from './Card'
+import Task from './Task'
 
 const AspectsContainer = () => {
-  const  { aspects } = useAspects()
+  const{ getLongTasks } = useAspects()
 
   return(
     <View style={styles.container}>
-      <Text style={[theme.fonts.types.heading, {
+      <Text style={[theme.fonts.types.subHeading, {
         paddingBottom: '4%' 
-      }]}>Aspects</Text>
+      }]}>Long Term Tasks</Text>
       <ScrollView 
         horizontal={true} 
         showsVerticalScrollIndicator={false} 
         showsHorizontalScrollIndicator={false}
       >
         <FlatList 
+          contentContainerStyle={{
+            backgroundColor: 'green',
+            height: 140,
+            display: 'flex',
+            justifyContent: 'space-between' 
+          }}
+          key={1}
           keyExtractor={(item, index) => `${index}`}
-          // horizontal
-          numColumns={Math.ceil(aspects.length / 2)}
-          data={aspects}
-          renderItem={({ item: aspect }) => (
-            <Card aspect={aspect}/>
+          numColumns={Math.ceil(getLongTasks().length / 2)}
+          data={getLongTasks()}
+          renderItem={({ item: task }) => (
+            <Task text={task} style={{
+            }}/>
           )}
         />
       </ScrollView>
@@ -35,7 +43,7 @@ const AspectsContainer = () => {
 const styles = StyleSheet.create({
   container: {
     marginTop: '10%',
-    height: 370,
+    height: 200,
     backgroundColor: 'pink',
     paddingLeft: '4%', 
   },

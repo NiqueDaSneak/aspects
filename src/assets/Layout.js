@@ -4,13 +4,13 @@ import ModalConductor from '../components/Modals/ModalConductor'
 import { useModal } from '../hooks/modal.hook'
 
 const Layout = ({ children }) => {
-  const  { modalActive, openModal, modalType } = useModal()
+  const  { modalActive, openModal, modalType, closeModal } = useModal()
 
   return(
     <>
       {children}
       <Footer openModal={(type) => openModal(type)} />
-      <ModalConductor modalType={modalType} modalActive={modalActive} />
+      <ModalConductor modalType={modalType} modalActive={modalActive} closeModal={() => closeModal()} />
     </>
   )
 }

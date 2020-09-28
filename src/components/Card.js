@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native'
 import { theme } from '../assets/utils'
 
 const Card = ({ aspect }) => {
-  console.log(aspect)
   return(
     <View style={styles.card}>
       <View style={styles.content}>
