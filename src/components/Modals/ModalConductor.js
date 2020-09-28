@@ -6,20 +6,27 @@ import AddNewAspect from '../Modals/AddNewAspect'
 import * as Animatable from 'react-native-animatable'
 
 const ModalConductor = ({ modalActive, modalType, closeModal }) => {
-  if (modalType !== undefined) {
-    return(
-      <Animatable.View animation={ modalType === undefined ? null : Animations.slide(modalActive) } style={styles.modal}>
-        <AddNewAspect active={modalType === 'ADD_NEW_ASPECT'} closeModal={closeModal} />
-      </Animatable.View>
-    )
-  } else {
-    return null
-  }
+  return(
+    <Animatable.View animation={Animations.slide(modalActive) } style={styles.modal}>
+      { modalType !== undefined && 
+      <AddNewAspect active={modalType === 'ADD_NEW_ASPECT'} closeModal={closeModal} />
+      }
+    </Animatable.View>
+  )
+  // console.log(modalType)
+  // if (modalType !== undefined) {
+  //   return(
+  //       <AddNewAspect active={modalType === 'ADD_NEW_ASPECT'} closeModal={closeModal} />
+  //   )
+  // } else {
+  //   return null
+  // }
 }
 
 const styles = StyleSheet.create({
   modal: {
     opacity: 0,
+    bottom: '-100%',   
     paddingRight: '4%',
     paddingLeft: '4%',
     height: '100%',

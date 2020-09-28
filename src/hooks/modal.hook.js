@@ -5,6 +5,7 @@ export const useModal = () => {
   const [modalType, setModalType] = useState()
 
   const openModal = useCallback((type) => {
+    console.log('type: ', type)
     setModalType(type)
     setModalActive(true)
   },
