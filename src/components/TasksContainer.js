@@ -6,14 +6,14 @@ import { useAspects } from '../hooks/aspects.hook'
 import Card from './Card'
 import Task from './Task'
 
-const AspectsContainer = () => {
-  const{ getLongTasks } = useAspects()
+const TasksContainer = ({type}) => {
+  const{ getTasks } = useAspects()
 
   return(
     <View style={styles.container}>
       <Text style={[theme.fonts.types.subHeading, {
         paddingBottom: '4%' 
-      }]}>Long Term Tasks</Text>
+      }]}>{type === 'long' ? 'Long Term Tasks' : 'Short Term Tasks'}</Text>
       <ScrollView 
         horizontal={true} 
         showsVerticalScrollIndicator={false} 
@@ -21,15 +21,14 @@ const AspectsContainer = () => {
       >
         <FlatList 
           contentContainerStyle={{
-            backgroundColor: 'green',
             height: 140,
             display: 'flex',
             justifyContent: 'space-between' 
           }}
           key={1}
           keyExtractor={(item, index) => `${index}`}
-          numColumns={Math.ceil(getLongTasks().length / 2)}
-          data={getLongTasks()}
+          numColumns={Math.ceil(getTasks(type).length / 2)}
+          data={getTasks(type)}
           renderItem={({ item: task }) => (
             <Task text={task} style={{
             }}/>
@@ -44,9 +43,8 @@ const styles = StyleSheet.create({
   container: {
     marginTop: '10%',
     height: 200,
-    backgroundColor: 'pink',
     paddingLeft: '4%', 
   },
 })
 
-export default AspectsContainer
+export default TasksContainer

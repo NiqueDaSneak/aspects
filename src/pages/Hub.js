@@ -1,44 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, ScrollView } from 'react-native'
+import React from 'react'
+import { StyleSheet, ScrollView } from 'react-native'
 import AspectsContainer from '../components/AspectsContainer'
-import LongTasksContainer from '../components/LongTasksContainer'
-import { useAspects } from '../hooks/aspects.hook'
+import TasksContainer from '../components/TasksContainer'
 
 const Hub = () => {
 
   return(
-    <ScrollView style={styles.page}>
+    <ScrollView 
+      contentContainerStyle={{
+        height: 1000 
+      }}>
       <AspectsContainer />
-      {/* <View style={styles.aspectsContainer}>
-        
-      </View> */}
-      <LongTasksContainer />
-      <View style={styles.shortTasks}>
-
-      </View>
+      <TasksContainer type='long' />
+      <TasksContainer type='short' />
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  page: {
-    // height: '50%',
-    // width: '100%',
-    backgroundColor: 'grey',
-  },
-  // aspectsContainer: {
-  //   marginTop: '10%',
-  //   height: '33%',
-  //   backgroundColor: 'pink'
+  // page: {
+  //   height: 5000,
+  //   width: '100%',
+  //   backgroundColor: 'grey',
   // },
-  shortTasks: {
-    height: '33%',
-    backgroundColor: 'red'
-  },
-  longTasks: {
-    height: '33%',
-    backgroundColor: 'orange'
-  },
+  contentContainer: {
+    
+  }
 })
 
 export default Hub

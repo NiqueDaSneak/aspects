@@ -9,27 +9,27 @@ const Card = ({ aspect }) => {
 
       </View>
       <View style={styles.titleContainer}>
-        <Text style={{
-          fontSize: theme.fonts.sizes.small,
-          color: 'red',
-          textAlign: 'center' 
-        }}>{aspect.title}</Text>
+        <Text style={styles.titleStyle}>{aspect.title}</Text>
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  titleStyle: {
+    fontSize: theme.fonts.sizes.small,
+    color: 'black',
+    textAlign: 'center' 
+},
   titleContainer: {
-    backgroundColor: 'black', 
-    // height: '20%', 
+    backgroundColor: 'grey', 
     width: '100%', 
     borderBottomLeftRadius: 15, 
     borderBottomRightRadius: 15,  
     padding: '4%'
   },
   content: {
-    backgroundColor: 'orange', 
+    backgroundColor: 'black', 
     height: '90%', 
     width: '100%', 
     borderTopLeftRadius: 15, 

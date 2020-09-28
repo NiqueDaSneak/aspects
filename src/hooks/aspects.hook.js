@@ -73,9 +73,9 @@ export const useAspects = () => {
   [],
   )
 
-  const getLongTasks = useCallback(() => {
+  const getTasks = useCallback((type) => {
     console.log('inside getLongTasks')
-    let matches = aspects.filter(aspect => aspect.type === 'long')
+    let matches = aspects.filter(aspect => aspect.type === type)
     console.log('matches: ', matches)
     let longTaskArrays = matches.map(el => el.tasks).concat()
     // matches.forEach(match => {
@@ -88,6 +88,6 @@ export const useAspects = () => {
   return {
     aspects: aspects,
     addNewAspect: addNewAspect,
-    getLongTasks: getLongTasks,
+    getTasks: getTasks,
   }
 }
