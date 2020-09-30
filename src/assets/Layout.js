@@ -5,12 +5,11 @@ import { useModal } from '../hooks/modal.hook'
 
 const Layout = ({ children }) => {
   const  { modalActive, openModal, modalType, closeModal } = useModal()
-
   return(
     <>
       {children}
-      <Footer openModal={(type) => openModal(type)} />
-      <ModalConductor modalType={modalType} modalActive={modalActive} closeModal={() => closeModal()} />
+      <Footer modalActive={modalActive} openModal={openModal} />
+      <ModalConductor modalActive={modalActive} modalType={modalType} closeModal={closeModal}/>
     </>
   )
 }

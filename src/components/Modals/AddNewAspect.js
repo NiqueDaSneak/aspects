@@ -13,8 +13,10 @@ import {
 import { theme } from '../../assets/utils'
 import Task from '../Task'   
 import { useAspects } from '../../hooks/aspects.hook'
+import { useModal} from '../../hooks/modal.hook'
 
-const AddNewAspect = ({ modalActive, closeModal }) => {
+const AddNewAspect = ({closeModal}) => {
+  // const [ closeModal, modalActive ] = useModal()
   const  { addNewAspect } = useAspects()
   const [aspectTitle, setAspectTitle] = useState('Useless Placeholder')
   const [aspectType, setAspectType] = useState(false)

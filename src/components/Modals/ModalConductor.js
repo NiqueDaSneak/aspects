@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import { StyleSheet, View, Animated } from 'react-native'
-
-// import Animations from '../../assets/animations'
+import { StyleSheet, View, Animated, Easing } from 'react-native'
+import { useModal } from '../../hooks/modal.hook'
 import AddNewAspect from '../Modals/AddNewAspect'
-// import * as Animatable from 'react-native-animatable'
 
 const ModalConductor = ({ modalActive, modalType, closeModal }) => {
 
@@ -13,16 +11,16 @@ const ModalConductor = ({ modalActive, modalType, closeModal }) => {
     if (modalActive) {
       Animated.timing(slideUpAnimation, {
         toValue: 0,
-        duration: 200,
-        useNativeDriver: false
-        // easing: Easing.linear,
+        duration: 800,
+        useNativeDriver: false,
+        easing: Easing.ease,
       }).start()
     } else {
       Animated.timing(slideUpAnimation, {
         toValue: -100,
-        duration: 200,
-        useNativeDriver: false
-        // easing: Easing.linear,
+        duration: 800,
+        useNativeDriver: false,
+        easing: Easing.ease,
       }).start()
     }
   }, [modalActive])
@@ -35,13 +33,8 @@ const ModalConductor = ({ modalActive, modalType, closeModal }) => {
         outputRange: ['-100%', '0%']
 
       }),
-      // bottom: '-100%' ,
-
     }}>
-      {/* { modalType !== undefined &&  */}
-      {/* <AddNewAspect active={true} closeModal={closeModal} /> */}
       <AddNewAspect active={modalType === 'ADD_NEW_ASPECT'} closeModal={closeModal} />
-      {/* } */}
     </Animated.View>
   )
 }
