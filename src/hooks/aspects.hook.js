@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
 export const useAspects = () => {
-  // const [aspects, setAspects] = useState([])
   const [aspects, setAspects] = useState([
     {
       'title': 'This is the title',
