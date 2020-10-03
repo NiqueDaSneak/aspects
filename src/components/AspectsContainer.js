@@ -7,50 +7,43 @@ import Card from './Card'
 
 const AspectsContainer = () => {
   const  { aspects } = useAspects()
+  const Container = ({ children }) => (
+    <View style={styles.container}>
+      <Text style={[theme.fonts.types.heading, {
+        paddingBottom: '4%' 
+      }]}>Aspects</Text>
+      <ScrollView 
+        horizontal={true} 
+        showsVerticalScrollIndicator={false} 
+        showsHorizontalScrollIndicator={false}
+      >
+        {children}
+      </ScrollView>
+    </View>
+  )
 
   return aspects.length === 0 ? (
-    <View style={styles.container}>
-      <Text style={[theme.fonts.types.heading, {
-        paddingBottom: '4%' 
-      }]}>Aspects</Text>
-      <ScrollView 
-        horizontal={true} 
-        showsVerticalScrollIndicator={false} 
-        showsHorizontalScrollIndicator={false}
-      >
-        <FlatList 
-          keyExtractor={(item, index) => `${index}`}
-          // horizontal
-          numColumns={Math.ceil(aspects.length / 2)}
-          data={aspects}
-          renderItem={({ item: aspect }) => (
-            <Card aspect={aspect}/>
-          )}
-        />
-      </ScrollView>
-    </View>
+    <Container>
+      <FlatList 
+        keyExtractor={(item, index) => `${index}`}
+        numColumns={1}
+        data={['render disabled card']}
+        renderItem={({ item }) => (
+          <Card disabled />
+        )}
+      />
+    </Container>
   ) : (
-    <View style={styles.container}>
-      <Text style={[theme.fonts.types.heading, {
-        paddingBottom: '4%' 
-      }]}>Aspects</Text>
-      <ScrollView 
-        horizontal={true} 
-        showsVerticalScrollIndicator={false} 
-        showsHorizontalScrollIndicator={false}
-      >
-        <FlatList 
-          keyExtractor={(item, index) => `${index}`}
-          // horizontal
-          numColumns={Math.ceil(aspects.length / 2)}
-          data={aspects}
-          renderItem={({ item: aspect }) => (
-            <Card aspect={aspect}/>
-          )}
-        />
-      </ScrollView>
-    </View>
-
+    <Container>
+      <FlatList 
+        keyExtractor={(item, index) => `${index}`}
+        numColumns={Math.ceil(aspects.length / 2)}
+        data={aspects}
+        renderItem={({ item: aspect }) => (
+          <Card data={aspect} />
+        )}
+      />
+    </Container>
   )
 
   // return(

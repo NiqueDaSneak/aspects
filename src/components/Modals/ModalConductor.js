@@ -41,8 +41,6 @@ const ModalConductor = ({ modalActive, modalType, closeModal }) => {
 
 const styles = StyleSheet.create({
   modal: {
-    // opacity: 0,
-    // bottom: slideUpAnimation,   
     paddingRight: '4%',
     paddingLeft: '4%',
     height: '100%',

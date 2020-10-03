@@ -2,14 +2,28 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { theme } from '../assets/utils'
 
-const Card = ({ aspect }) => {
-  return(
+const Card = ({ data, disabled }) => {
+
+  return disabled ? (
+    <View style={styles.card}>
+      <View style={{
+        ...styles.content,
+        backgroundColor: 'lightgrey' 
+      }}>
+
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.titleStyle}></Text>
+      </View>
+    </View>
+
+  ) : (
     <View style={styles.card}>
       <View style={styles.content}>
 
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.titleStyle}>{aspect.title}</Text>
+        <Text style={styles.titleStyle}>{data.title}</Text>
       </View>
     </View>
   )
@@ -20,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: theme.fonts.sizes.small,
     color: 'black',
     textAlign: 'center' 
-},
+  },
   titleContainer: {
     backgroundColor: 'grey', 
     width: '100%', 
