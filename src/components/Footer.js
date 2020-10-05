@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   footer: {
     height: '10%',
     width: '100%',
-    backgroundColor: 'green',
+    backgroundColor: 'grey',
     position: 'absolute',
     bottom: 0,
     zIndex: 1

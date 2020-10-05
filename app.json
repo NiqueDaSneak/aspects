@@ -8,6 +8,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "description": ""
+    "description": "",
+    "splash": {
+      "image": "./src/assets/splash.png"
+    }
   }
 }
