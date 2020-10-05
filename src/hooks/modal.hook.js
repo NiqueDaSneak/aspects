@@ -1,17 +1,30 @@
 import React, { useState, useCallback } from 'react'
-import ModalContext from '../state/modal.context'
 
 export const useModal = () => {
-    const [modalActive, setModalActive] = useState(false)
 
-    const openModal = useCallback(() => {
-        setModalActive(true)
-    },
-    [],
-    )
+  const [modalActive, setModalActive] = useState(false)
+  const [modalType, setModalType] = useState()
 
-    return {
-        modalActive,
-        openModal
-    }
+
+  const openModal = useCallback((type) => {
+    
+    setModalType(type)
+    setModalActive(true)
+  },
+  [modalActive],
+  )
+
+  const closeModal = useCallback(() => {
+    // setModalType(type)
+    setModalActive(false)
+  },
+  [modalActive],
+  )
+
+  return {
+    modalActive,
+    openModal,
+    closeModal,
+    modalType
+  }
 }
