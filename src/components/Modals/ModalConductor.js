@@ -11,14 +11,14 @@ const ModalConductor = ({ modalActive, modalType, closeModal }) => {
     if (modalActive) {
       Animated.timing(slideUpAnimation, {
         toValue: 0,
-        duration: 800,
+        duration: 600,
         useNativeDriver: false,
         easing: Easing.ease,
       }).start()
     } else {
       Animated.timing(slideUpAnimation, {
         toValue: -100,
-        duration: 800,
+        duration: 600,
         useNativeDriver: false,
         easing: Easing.ease,
       }).start()
