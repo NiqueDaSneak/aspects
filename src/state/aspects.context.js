@@ -6,32 +6,52 @@ export const AspectsContext = createContext()
 const initialState = {
   aspects: [
     {
-      'title': 'Aspect Title',
+      'title': 'My Home',
       'type': 'long',
-      'importanceStatement': 'This is a statement of importance. ',
-      // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
+      'importanceStatement': 'This is important to me because I live AND work here. I need this place to be comfortable for me and Pea but also allow for a level of focus and creativity.',
+      'considerations': ['Use Pinterest to design your own plant wall.', 'Find a way to stay more organized.'],
     },
     {
-      'title': 'Aspect Title',
+      'title': 'Pea',
       'type': 'long',
-      'importanceStatement': 'This is a statement of importance. ',
-      // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
+      'importanceStatement': 'This is important to me because I love this boy and want him to thrive',
+      'considerations': ['What more training can I do with him?', 'How can I get him to some water'],
     },
     {
-      'title': 'Aspect Title',
+      'title': 'Stop watching porn',
       'type': 'short',
-      'importanceStatement': 'This is a statement of importance. ',
-      // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
+      'importanceStatement': 'This is important to me because I want to protect the sanctity of my body and mind, and I want to practice seminal retention.',
+      'considerations': ['Try doing push ups if you catch yourself watching porn'],
     },
     {
-      'title': 'Aspect Title',
+      'title': 'Lack of drive for personal projects',
+      'type': 'short',
+      'importanceStatement': 'This is important',
+      'considerations': ['What can you do to give yourself some more creative juice?', 'How can you brutally remind yourself of your whys'],
+    },
+    {
+      'title': 'Financials',
       'type': 'long',
-      'importanceStatement': 'This is a statement of importance. ',
-      // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
+      'importanceStatement': 'this is important to me because I was never taught how to have success in this area, and I can’t squander the opportunity I find myself in to make this wealth permanent for my family. It’s is important to me to also learn how to pass this information, skills and money to those I love.',
+      'considerations': ['Prepare a down payment for my first investment property', 'Get my credit over 700', 'Max out my Roth', 'Save six thousand to fix my upside down car loan'],
+    },
+    {
+      'title': 'Asana Practice',
+      'type': 'short',
+      'importanceStatement': 'This is important to me because this is something I can give to people, so it needs to be a consistent part of my life. Also the benefits won’t hurt either.',
+      'considerations': ['Do a practice three days in a row.'],
+    },
+    {
+      'title': 'Developer Career',
+      'type': 'long',
+      'importanceStatement': 'This is important to me because of the constant mental challenge this brings. Software engineering is a way for me to get the mental test I need, but also bleed into being able to create ideas that I have. this is important to me because there are still so many more opportunities for me to learn and grow as well as benefit financially. Its a part of the bigger picture because this is how I am going to fund the beginning of my real estate empire. It does have an effect on others in the sense that I will be able to provide for my family and many other black peoples with the ways in which I can flip this money I make now.',
+      'considerations': ['Positioning myself as full stack.', 'Learn server less and typescript in react.'],
+    },
+    {
+      'title': 'Gym Life & Nutrition',
+      'type': 'long',
+      'importanceStatement': 'This is important to me because I want to stay healthy and not waste the athleticism I have. I also use my body to express the strength and joy I feel, and also push it to the limit as a way to release my own fears and pain.',
+      'considerations': ['Stick to a more vegan diet.', 'Only eat sweet treats made by Michelle.', 'Figure out how can you get into cycling?'],
     },
   ],
 }

@@ -10,11 +10,12 @@ const ConsiderationsContainer = ({ type }) => {
   const [state, dispatch] = useContext(AspectsContext)
   const { aspects } = state
 
-  const getTasks = (type) => {
+  const getConsiderations = (type) => {
     let matches = aspects.filter(aspect => aspect.type === type)
-    let taskArrays = matches.map(el => el.tasks).concat()
-    return [].concat.apply([], taskArrays)
+    let considerationArrays = matches.map(el => el.considerations).concat()
+    return [].concat.apply([], considerationArrays)
   }
+  
   return(
     <View style={styles.container}>
       <Text style={[theme.fonts.types.subHeading, {
@@ -33,11 +34,10 @@ const ConsiderationsContainer = ({ type }) => {
           }}
           key={aspects.length}
           keyExtractor={(item, index) => `${index}`}
-          numColumns={Math.ceil(getTasks(type).length / 2)}
-          data={getTasks(type)}
-          renderItem={({ item: task }) => (
-            <Consideration text={task} style={{
-            }}/>
+          numColumns={Math.ceil(getConsiderations(type).length / 2)}
+          data={getConsiderations(type)}
+          renderItem={({ item: consideration }) => (
+            <Consideration text={consideration} />
           )}
         />
       </ScrollView>

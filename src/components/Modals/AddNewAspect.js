@@ -23,14 +23,14 @@ const AddNewAspect = () => {
   const [aspectTitle, setAspectTitle] = useState('Useless Placeholder')
   const [aspectType, setAspectType] = useState(false)
   const [importance, setImportance] = useState('')
-  const [taskCreatorInputValue, setTaskCreatorInputValue] = useState('')
-  const [tasks, setTasks] = useState([])
+  const [considerationCreatorInputValue, setConsiderationCreatorInputValue] = useState('')
+  const [considerations, setConsiderations] = useState([])
 
   const toggleSwitch = () => setAspectType(previousState => !previousState)
 
-  const addNewTask = () => {
-    setTasks(tasks => [...tasks, taskCreatorInputValue])
-    setTaskCreatorInputValue('')
+  const addNewConsideration = () => {
+    setConsiderations(considerations => [...considerations, considerationCreatorInputValue])
+    setConsiderationCreatorInputValue('')
   }
 
   const submitNewAspect = () => {
@@ -38,7 +38,7 @@ const AddNewAspect = () => {
       title: aspectTitle,
       type: aspectType ? 'long' : 'short',
       importanceStatement: importance,
-      tasks: tasks
+      considerations: considerations
     }
     aspectsDispatch({
       type: 'ADD_NEW_ASPECT',
@@ -109,21 +109,21 @@ const AddNewAspect = () => {
       <Text style={{
         fontSize: theme.fonts.sizes.small 
       }}>What tasks will address this?</Text>
-      <View style={styles.newTaskContainer}>
+      <View style={styles.newConsiderationContainer}>
         <TextInput
           multiline={true}
           blurOnSubmit={true}
           keyboardAppearance={'dark'}
           returnKeyType={'done'}                             
           maxLength={54}
-          style={styles.taskCreatorInput}
+          style={styles.considerationCreatorInput}
           onChangeText={(text) => {
-            setTaskCreatorInputValue(text)
+            setConsiderationCreatorInputValue(text)
           }}   
-          value={taskCreatorInputValue}
+          value={considerationCreatorInputValue}
         />
-        <View style={styles.newTaskBtn}>
-          <TouchableOpacity onPress={() => addNewTask()}>
+        <View style={styles.newConsiderationBtn}>
+          <TouchableOpacity onPress={() => addNewConsideration()}>
             <Text style={{
               color: 'white',
               fontSize: theme.fonts.sizes.medium 
@@ -138,9 +138,9 @@ const AddNewAspect = () => {
         <FlatList 
           keyExtractor={(item, index) => `${index}`}
           horizontal
-          data={tasks}
-          renderItem={({ item: task }) => (
-            <Consideration key={task} text={task} />
+          data={considerations}
+          renderItem={({ item: consideration }) => (
+            <Consideration key={consideration} text={consideration} />
           )}
         />
       </View>
@@ -150,7 +150,7 @@ const AddNewAspect = () => {
 }
 
 const styles = StyleSheet.create({
-  newTaskContainer: {
+  newConsiderationContainer: {
     ...theme.layout.flex.row,  
     alignItems: 'center', 
     justifyContent: 'space-between'
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center'
   },
-  taskCreatorInput: {         
+  considerationCreatorInput: {         
     borderRadius: 10, 
     fontSize: theme.fonts.sizes.small, 
     borderColor: 'gray', 
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   submitBtn: {
     paddingBottom: '4%',
   },
-  newTaskBtn: {
+  newConsiderationBtn: {
     width: '15%',
     backgroundColor: 'black',
     height: 40,
