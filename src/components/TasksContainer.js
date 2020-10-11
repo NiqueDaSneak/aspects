@@ -19,7 +19,7 @@ const TasksContainer = ({ type }) => {
     <View style={styles.container}>
       <Text style={[theme.fonts.types.subHeading, {
         paddingBottom: '4%' 
-      }]}>{type === 'long' ? 'Long Term Tasks' : 'Short Term Tasks'}</Text>
+      }]}>{type === 'long' ? 'Long Term Considerations' : 'Short Term Considerations'}</Text>
       <ScrollView 
         horizontal={true} 
         showsVerticalScrollIndicator={false} 

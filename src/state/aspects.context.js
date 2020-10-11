@@ -10,28 +10,28 @@ const initialState = {
       'type': 'long',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ['Hchhf djfjjd', 'Hdhdhf djjf']
+      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
     },
     {
       'title': 'Aspect Title',
       'type': 'long',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ['Hchhf djfjjd', 'Hdhdhf djjf']
+      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
     },
     {
       'title': 'Aspect Title',
       'type': 'short',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ['Hchhf djfjjd', 'Hdhdhf djjf']
+      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
     },
     {
       'title': 'Aspect Title',
       'type': 'long',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ['Hchhf djfjjd', 'Hdhdhf djjf']
+      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
     },
   ],
 }
