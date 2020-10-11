@@ -3,20 +3,24 @@ import { StyleSheet, View, Text, FlatList } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
 import Card from './Card'
-import { AspectContext } from '../context/aspect.context'
+import { AspectsContext, ModalContext } from '../state'
 
-const AspectsContainer = ({ openModal }) => {
+const AspectsContainer = () => {
 
-  const [state] = useContext(AspectContext)
-  const { aspects } = state
+  const [aspectState] = useContext(AspectsContext)
+  const { aspects } = aspectState
+  const [modalState, modalDispatch] = useContext(ModalContext)
 
   return(
     <Container>
-      <TouchableOpacity on onPress={() => openModal('ADD_NEW_ASPECT')}>
+      <TouchableOpacity on onPress={() => modalDispatch({
+        type: 'OPEN_MODAL',
+        payload: 'ADD_NEW_ASPECT' 
+      })}>
         <Card disabled /> 
       </TouchableOpacity>
       <FlatList
-        key={Math.random()}        
+        key={aspects.length}        
         keyExtractor={(item, index) => `${index}`}
         numColumns={Math.ceil(aspects.length / 2)}
         data={aspects}

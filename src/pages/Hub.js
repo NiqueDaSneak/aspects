@@ -3,14 +3,14 @@ import { StyleSheet, ScrollView } from 'react-native'
 import AspectsContainer from '../components/AspectsContainer'
 import TasksContainer from '../components/TasksContainer'
 
-const Hub = ({openModal, aspects}) => {
+const Hub = () => {
 
   return(
     <ScrollView 
       contentContainerStyle={{
         height: 1000 
       }}>
-      <AspectsContainer aspects={aspects} openModal={openModal} />
+      <AspectsContainer />
       <TasksContainer type='long' />
       <TasksContainer type='short' />
     </ScrollView>

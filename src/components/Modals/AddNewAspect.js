@@ -12,15 +12,15 @@ import {
 } from 'react-native'
 import { theme } from '../../assets/utils'
 import Task from '../Task'   
-import { useAspects } from '../../hooks/aspects.hook'
-import { useModal} from '../../hooks/modal.hook'
-import {AspectContext} from '../../context/aspect.context'
+import {AspectsContext, ModalContext} from '../../state'
 
-const AddNewAspect = ({closeModal}) => {
+
+const AddNewAspect = () => {
   // const [ closeModal, modalActive ] = useModal()
   // const  { addNewAspect } = useAspects()
 
-  const [state, dispatch] = useContext(AspectContext)
+  const [aspectsState, aspectsDispatch] = useContext(AspectsContext)
+  const [modalState, modalDispatch] = useContext(ModalContext)
 
   const [aspectTitle, setAspectTitle] = useState('Useless Placeholder')
   const [aspectType, setAspectType] = useState(false)
@@ -42,13 +42,14 @@ const AddNewAspect = ({closeModal}) => {
       importanceStatement: importance,
       tasks: tasks
     }
-    dispatch({
+    aspectsDispatch({
       type: 'ADD_NEW_ASPECT',
       payload: newAspect
     })
-    // dispatch('ADD_NEW_ASPECT', newAspect)
-    // addNewAspect(newAspect)
-    closeModal()
+    modalDispatch({
+      type: 'CLOSE_MODAL'
+    })
+    // closeModal()
   }
 
 
