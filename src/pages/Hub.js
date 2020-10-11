@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, ScrollView } from 'react-native'
 import AspectsContainer from '../components/AspectsContainer'
-import TasksContainer from '../components/TasksContainer'
+import ConsiderationsContainer from '../components/ConsiderationsContainer'
 
 const Hub = () => {
 
@@ -11,8 +11,8 @@ const Hub = () => {
         height: 1000 
       }}>
       <AspectsContainer />
-      <TasksContainer type='long' />
-      <TasksContainer type='short' />
+      <ConsiderationsContainer type='long' />
+      <ConsiderationsContainer type='short' />
     </ScrollView>
   )
 }

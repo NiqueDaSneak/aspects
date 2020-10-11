@@ -10,28 +10,28 @@ const initialState = {
       'type': 'long',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
+      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
     },
     {
       'title': 'Aspect Title',
       'type': 'long',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
+      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
     },
     {
       'title': 'Aspect Title',
       'type': 'short',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
+      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
     },
     {
       'title': 'Aspect Title',
       'type': 'long',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
-      'tasks': ["This is the max task length, tested and secured bbbbbb", "This is the max task length, tested and secured bbbbbb"]
+      'tasks': ["This is the max task length, tested and secured bb bbb", "This is the max task length, tested and secured bb bbb"]
     },
   ],
 }

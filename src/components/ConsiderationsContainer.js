@@ -4,9 +4,9 @@ import { StyleSheet, View, Text, FlatList } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
 import { AspectsContext } from '../state'
-import Task from './Task'
+import Consideration from './Consideration'
 
-const TasksContainer = ({ type }) => {
+const ConsiderationsContainer = ({ type }) => {
   const [state, dispatch] = useContext(AspectsContext)
   const { aspects } = state
 
@@ -36,7 +36,7 @@ const TasksContainer = ({ type }) => {
           numColumns={Math.ceil(getTasks(type).length / 2)}
           data={getTasks(type)}
           renderItem={({ item: task }) => (
-            <Task text={task} style={{
+            <Consideration text={task} style={{
             }}/>
           )}
         />
@@ -48,13 +48,14 @@ const TasksContainer = ({ type }) => {
 const styles = StyleSheet.create({
   container: {
     marginTop: '10%',
-    height: 200,
+    // height: 200,
     paddingLeft: '4%', 
+    // backgroundColor: 'pink'
   },
 })
 
-TasksContainer.propTypes = {
-  type: PropTypes.string,
-}
+// ConsiderationsContainer.propTypes = {
+//   type: PropTypes.string,
+// }
 
-export default TasksContainer
+export default ConsiderationsContainer

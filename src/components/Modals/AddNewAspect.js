@@ -11,7 +11,7 @@ import {
   FlatList,
 } from 'react-native'
 import { theme } from '../../assets/utils'
-import Task from '../Task'   
+import Consideration from '../Consideration'   
 import { AspectsContext, ModalContext } from '../../state'
 
 
@@ -140,7 +140,7 @@ const AddNewAspect = () => {
           horizontal
           data={tasks}
           renderItem={({ item: task }) => (
-            <Task key={task} text={task} />
+            <Consideration key={task} text={task} />
           )}
         />
       </View>
