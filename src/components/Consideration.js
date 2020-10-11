@@ -18,10 +18,9 @@ const Consideration = ({ style, text }) => {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    // height: '100%',
+    minHeight: 80,
+    marginBottom: 10,
     marginRight: 10,
-    // marginBottom: 10,
-    // width: 200,
     padding: 10,
     borderColor: 'black',
     borderWidth: 1, 
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   taskBtn: {
-    // paddingLeft: 20,
     fontSize: theme.fonts.sizes.large,
   },
   taskText: {

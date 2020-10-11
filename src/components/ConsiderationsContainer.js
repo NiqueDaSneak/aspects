@@ -48,9 +48,8 @@ const ConsiderationsContainer = ({ type }) => {
 const styles = StyleSheet.create({
   container: {
     marginTop: '10%',
-    // height: 200,
-    paddingLeft: '4%', 
-    // backgroundColor: 'pink'
+    height: 220,
+    paddingLeft: '4%',     
   },
 })
 
