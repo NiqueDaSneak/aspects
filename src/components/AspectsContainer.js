@@ -1,41 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, View, Text, FlatList } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
-import { useAspects } from '../hooks/aspects.hook'
 import Card from './Card'
+import { AspectsContext, ModalContext } from '../state'
+import PropTypes from 'prop-types'
 
 const AspectsContainer = () => {
-  const  { aspects } = useAspects()
-  const Container = ({ children }) => (
-    <View style={styles.container}>
-      <Text style={[theme.fonts.types.heading, {
-        paddingBottom: '4%' 
-      }]}>Aspects</Text>
-      <ScrollView 
-        horizontal={true} 
-        showsVerticalScrollIndicator={false} 
-        showsHorizontalScrollIndicator={false}
-      >
-        {children}
-      </ScrollView>
-    </View>
-  )
 
-  return aspects.length === 0 ? (
+  const [aspectState] = useContext(AspectsContext)
+  const { aspects } = aspectState
+  // eslint-disable-next-line no-unused-vars
+  const [modalState, modalDispatch] = useContext(ModalContext)
+
+  return(
     <Container>
-      <FlatList 
-        keyExtractor={(item, index) => `${index}`}
-        numColumns={1}
-        data={['render disabled card']}
-        renderItem={({ item }) => (
-          <Card disabled />
-        )}
-      />
-    </Container>
-  ) : (
-    <Container>
-      <FlatList 
+      <TouchableOpacity on onPress={() => modalDispatch({
+        type: 'OPEN_MODAL',
+        payload: 'ADD_NEW_ASPECT' 
+      })}>
+        <Card disabled /> 
+      </TouchableOpacity>
+      <FlatList
+        key={aspects.length}        
         keyExtractor={(item, index) => `${index}`}
         numColumns={Math.ceil(aspects.length / 2)}
         data={aspects}
@@ -44,30 +31,26 @@ const AspectsContainer = () => {
         )}
       />
     </Container>
-  )
+  ) 
+}
 
-  // return(
-  //   <View style={styles.container}>
-  //     <Text style={[theme.fonts.types.heading, {
-  //       paddingBottom: '4%' 
-  //     }]}>Aspects</Text>
-  //     <ScrollView 
-  //       horizontal={true} 
-  //       showsVerticalScrollIndicator={false} 
-  //       showsHorizontalScrollIndicator={false}
-  //     >
-  //       <FlatList 
-  //         keyExtractor={(item, index) => `${index}`}
-  //         // horizontal
-  //         numColumns={Math.ceil(aspects.length / 2)}
-  //         data={aspects}
-  //         renderItem={({ item: aspect }) => (
-  //           <Card aspect={aspect}/>
-  //         )}
-  //       />
-  //     </ScrollView>
-  //   </View>
-  // )
+const Container = ({children}) => (
+  <View style={styles.container}>
+    <Text style={[theme.fonts.types.heading, {
+      paddingBottom: '4%' 
+    }]}>Aspects</Text>
+    <ScrollView 
+      horizontal={true} 
+      showsVerticalScrollIndicator={false} 
+      showsHorizontalScrollIndicator={false}
+    >
+      {children}
+    </ScrollView>
+  </View>
+)
+
+Container.propTypes = {
+  children: PropTypes.any,
 }
 
 const styles = StyleSheet.create({

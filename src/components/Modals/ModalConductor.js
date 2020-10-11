@@ -1,9 +1,16 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
 import { StyleSheet, View, Animated, Easing } from 'react-native'
-import { useModal } from '../../hooks/modal.hook'
+// import { useModal } from '../../hooks/modal.hook'
 import AddNewAspect from '../Modals/AddNewAspect'
+import { ModalContext } from '../../state'
 
-const ModalConductor = ({ modalActive, modalType, closeModal }) => {
+const ModalConductor = () => {
+
+  const [state, dispatch] = useContext(ModalContext)
+  const { modalActive, modalType } = state
+  const closeModal = () => dispatch({
+    type: 'CLOSE_MODAL' 
+  })
 
   const slideUpAnimation = useRef(new Animated.Value(-100)).current
 
@@ -11,14 +18,14 @@ const ModalConductor = ({ modalActive, modalType, closeModal }) => {
     if (modalActive) {
       Animated.timing(slideUpAnimation, {
         toValue: 0,
-        duration: 800,
+        duration: 600,
         useNativeDriver: false,
         easing: Easing.ease,
       }).start()
     } else {
       Animated.timing(slideUpAnimation, {
         toValue: -100,
-        duration: 800,
+        duration: 600,
         useNativeDriver: false,
         easing: Easing.ease,
       }).start()

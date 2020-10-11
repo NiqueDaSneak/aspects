@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, View, Text, FlatList } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
-import { useAspects } from '../hooks/aspects.hook'
-import Card from './Card'
+import { AspectsContext } from '../state'
 import Task from './Task'
 
-const TasksContainer = ({type}) => {
-  const{ getTasks } = useAspects()
+const TasksContainer = ({ type }) => {
+  const [state, dispatch] = useContext(AspectsContext)
+  const { aspects } = state
 
+  const getTasks = (type) => {
+    let matches = aspects.filter(aspect => aspect.type === type)
+    let taskArrays = matches.map(el => el.tasks).concat()
+    return [].concat.apply([], taskArrays)
+  }
   return(
     <View style={styles.container}>
       <Text style={[theme.fonts.types.subHeading, {
@@ -25,7 +31,7 @@ const TasksContainer = ({type}) => {
             display: 'flex',
             justifyContent: 'space-between' 
           }}
-          key={1}
+          key={aspects.length}
           keyExtractor={(item, index) => `${index}`}
           numColumns={Math.ceil(getTasks(type).length / 2)}
           data={getTasks(type)}
@@ -46,5 +52,9 @@ const styles = StyleSheet.create({
     paddingLeft: '4%', 
   },
 })
+
+TasksContainer.propTypes = {
+  type: PropTypes.string,
+}
 
 export default TasksContainer

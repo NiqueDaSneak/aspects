@@ -5,16 +5,20 @@ import { theme } from '../assets/utils'
 const Card = ({ data, disabled }) => {
 
   return disabled ? (
-    <View style={styles.card}>
-      <View style={{
-        ...styles.content,
-        backgroundColor: 'lightgrey' 
-      }}>
-
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleStyle}></Text>
-      </View>
+    <View style={{
+      ...styles.card,
+      borderStyle: 'dashed',
+      borderWidth: 1,
+      borderColor: 'grey',
+      backgroundColor: 'lightgrey',
+      display: 'flex',
+      justifyContent: 'center', 
+      alignItems: 'center'
+    }}>
+      <Text style={{
+        fontSize: 50,
+        color: 'grey' 
+      }}>+</Text>
     </View>
 
   ) : (

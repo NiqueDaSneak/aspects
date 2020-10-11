@@ -6,13 +6,13 @@ import {
   TouchableOpacity, 
 } from 'react-native'
 import { theme } from '../assets/utils'
-import {useModal} from '../hooks/modal.hook'
+// import {useModal} from '../hooks/modal.hook'
 
-const Footer = ({modalActive, openModal}) => {
+const Footer = () => {
   
   return(
     <View style={styles.footer}>
-      <TouchableOpacity onPress={() => openModal('ADD_NEW_ASPECT')}>
+      <TouchableOpacity onPress={() => console.log('pressed')}>
         <Text style={styles.plus}>+</Text>
       </TouchableOpacity>
     </View>
