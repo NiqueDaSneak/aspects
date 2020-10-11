@@ -17,15 +17,4 @@ const Hub = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  // page: {
-  //   height: 5000,
-  //   width: '100%',
-  //   backgroundColor: 'grey',
-  // },
-  contentContainer: {
-    
-  }
-})
-
 export default Hub

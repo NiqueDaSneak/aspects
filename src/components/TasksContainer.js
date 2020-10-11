@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, View, Text, FlatList } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
 import { AspectsContext } from '../state'
-// import { useAspects } from '../hooks/aspects.hook'
-import Card from './Card'
 import Task from './Task'
 
 const TasksContainer = ({ type }) => {
@@ -53,5 +52,9 @@ const styles = StyleSheet.create({
     paddingLeft: '4%', 
   },
 })
+
+TasksContainer.propTypes = {
+  type: PropTypes.string,
+}
 
 export default TasksContainer

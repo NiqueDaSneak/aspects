@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { 
   StyleSheet, 
   Text, 
@@ -12,12 +12,10 @@ import {
 } from 'react-native'
 import { theme } from '../../assets/utils'
 import Task from '../Task'   
-import {AspectsContext, ModalContext} from '../../state'
+import { AspectsContext, ModalContext } from '../../state'
 
 
 const AddNewAspect = () => {
-  // const [ closeModal, modalActive ] = useModal()
-  // const  { addNewAspect } = useAspects()
 
   const [aspectsState, aspectsDispatch] = useContext(AspectsContext)
   const [modalState, modalDispatch] = useContext(ModalContext)

@@ -1,4 +1,5 @@
 import React, { useReducer, createContext } from 'react'
+import PropTypes from 'prop-types'
 
 export const AspectsContext = createContext()
 
@@ -20,7 +21,7 @@ const initialState = {
     },
     {
       'title': 'Aspect Title',
-      'type': 'long',
+      'type': 'short',
       'importanceStatement': 'This is a statement of importance. ',
       // eslint-disable-next-line quotes
       'tasks': ['Hchhf djfjjd', 'Hdhdhf djjf']
@@ -54,4 +55,8 @@ export const AspectsContextProvider = ({ children }) => {
       {children}
     </AspectsContext.Provider>
   )
+}
+
+AspectsContextProvider.propTypes = {
+  children: PropTypes.any
 }

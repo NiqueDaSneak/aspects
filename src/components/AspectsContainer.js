@@ -4,11 +4,13 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
 import Card from './Card'
 import { AspectsContext, ModalContext } from '../state'
+import PropTypes from 'prop-types'
 
 const AspectsContainer = () => {
 
   const [aspectState] = useContext(AspectsContext)
   const { aspects } = aspectState
+  // eslint-disable-next-line no-unused-vars
   const [modalState, modalDispatch] = useContext(ModalContext)
 
   return(
@@ -32,7 +34,7 @@ const AspectsContainer = () => {
   ) 
 }
 
-const Container = ({ children }) => (
+const Container = ({children}) => (
   <View style={styles.container}>
     <Text style={[theme.fonts.types.heading, {
       paddingBottom: '4%' 
@@ -47,6 +49,9 @@ const Container = ({ children }) => (
   </View>
 )
 
+Container.propTypes = {
+  children: PropTypes.any,
+}
 
 const styles = StyleSheet.create({
   container: {
