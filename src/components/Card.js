@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     padding: '4%'
   },
   content: {
-    backgroundColor: 'black', 
+    backgroundColor: 'darkgray', 
     height: '90%', 
     width: '100%', 
     borderTopLeftRadius: 15, 

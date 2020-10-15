@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import { 
   StyleSheet, 
   Text, 
@@ -26,6 +26,8 @@ const AddNewAspect = () => {
   const [considerationCreatorInputValue, setConsiderationCreatorInputValue] = useState('')
   const [considerations, setConsiderations] = useState([])
 
+  const inputRef = useRef()
+
   const toggleSwitch = () => setAspectType(previousState => !previousState)
 
   const addNewConsideration = () => {
@@ -50,6 +52,12 @@ const AddNewAspect = () => {
     // closeModal()
   }
 
+  useEffect(() => {
+    if (modalState.modalActive) {
+      inputRef.current.focus()
+    }
+  }, [modalState.modalActive])
+
 
   return(
     <KeyboardAvoidingView 
@@ -64,6 +72,7 @@ const AddNewAspect = () => {
         fontSize: theme.fonts.sizes.small 
       }}>Give Your Aspect A Title</Text>
       <TextInput
+        ref={inputRef}
         multiline={true}
         blurOnSubmit
         maxLength={41}
