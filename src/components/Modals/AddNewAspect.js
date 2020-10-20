@@ -24,14 +24,14 @@ const AddNewAspect = ({ visible }) => {
   const [modalState, modalDispatch] = useContext(ModalContext)
   const [aspectsState, aspectsDispatch] = useContext(AspectsContext)
   const [keyboardHeight] = useKeyboard()
-  console.log('keyboardHeight: ', keyboardHeight)
+
   const [aspectTitle, setAspectTitle] = useState('Useless Placeholder')
-  const [keyboardSpace, setkeyboardSpace] = useState(0)
-  const inputRef = useRef()
   const [questionIndex, setQuestionIndex] = useState(0)
+  const [importance, setImportance] = useState('')
+  
+  const inputRef = useRef()
   const slideLeft = useRef(new Animated.Value(0)).current
   const slideLeft2 = useRef(new Animated.Value(400)).current
-  const [importance, setImportance] = useState('')
 
   useEffect(() => {
     if (modalState.modalActive) {
@@ -105,6 +105,7 @@ const AddNewAspect = ({ visible }) => {
             style={styles.titleInput}
             onChangeText={text => setAspectTitle(text)}
             placeholder="Useless Placeholder"
+            onSubmitEditing={() => setQuestionIndex(questionIndex + 1)}
           /> 
           <Button color="green" title="Next" onPress={() => setQuestionIndex(questionIndex + 1)} />
         </Animated.View>
@@ -125,6 +126,7 @@ const AddNewAspect = ({ visible }) => {
             numberOfLines={4}
             style={styles.importanceInput}
             onChangeText={text => setImportance(text)}
+            onSubmitEditing={() => submitNewAspect()}
           />
           <Button color="green" title="Create" onPress={() => submitNewAspect()} />
         </Animated.View>
