@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { StyleSheet, View, Text, FlatList } from 'react-native'
+import { Image, StyleSheet, View, Text, FlatList } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
 import Card from './Card'
 import { AspectsContext, ModalContext } from '../state'
 import PropTypes from 'prop-types'
+import showAspectsTooltip from './Modals/showAspectsTooltip'
 
 const AspectsContainer = () => {
 
@@ -14,10 +15,10 @@ const AspectsContainer = () => {
   const [modalState, modalDispatch] = useContext(ModalContext)
 
   return(
-    <Container>
+    <Container modalDispatch={modalDispatch}>
       <TouchableOpacity on onPress={() => modalDispatch({
         type: 'OPEN_MODAL',
-        payload: 'ADD_NEW_ASPECT' 
+        modalType: 'ADD_NEW_ASPECT' 
       })}>
         <Card disabled /> 
       </TouchableOpacity>
@@ -34,11 +35,29 @@ const AspectsContainer = () => {
   ) 
 }
 
-const Container = ({children}) => (
+const Container = ({ children, modalDispatch }) => (
   <View style={styles.container}>
-    <Text style={[theme.fonts.types.heading, {
+    <View style={{
+      display: 'flex',
+      flexDirection: 'row', 
+      alignItems: 'center',
       paddingBottom: '4%' 
-    }]}>Aspects</Text>
+
+    }}>
+      <Text style={[theme.fonts.types.heading, {
+      }]}>Aspects</Text>
+      <TouchableOpacity onPress={() => showAspectsTooltip(modalDispatch)}>
+        <Image 
+          resizeMode="contain"
+          resizeMethod="resize"
+          style={{
+            resizeMode: 'contain',
+            marginLeft: 10,
+            height: 20,
+            width: 20
+          }} source={require('../assets/information.png')} />
+      </TouchableOpacity>
+    </View>
     <ScrollView 
       horizontal={true} 
       showsVerticalScrollIndicator={false} 
@@ -51,6 +70,7 @@ const Container = ({children}) => (
 
 Container.propTypes = {
   children: PropTypes.any,
+  modalDispatch: PropTypes.any
 }
 
 const styles = StyleSheet.create({
