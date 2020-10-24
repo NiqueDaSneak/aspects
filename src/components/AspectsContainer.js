@@ -11,13 +11,12 @@ const AspectsContainer = () => {
 
   const [aspectState] = useContext(AspectsContext)
   const { aspects } = aspectState
-  // eslint-disable-next-line no-unused-vars
   const [modalState, modalDispatch] = useContext(ModalContext)
 
   return(
     <Container modalDispatch={modalDispatch}>
       
-        <AspectCard creator /> 
+      <AspectCard creator /> 
       <FlatList
         key={aspects.length}        
         keyExtractor={(item, index) => `${index}`}

@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, Text, FlatList } from 'react-native'
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
-import { AspectsContext } from '../state'
+import { AspectsContext, ModalContext } from '../state'
 import Consideration from './Consideration'
+import showAspectsTooltip from './Modals/showAspectsTooltip'
 
 const ConsiderationsContainer = ({ type }) => {
-  const [state, dispatch] = useContext(AspectsContext)
-  const { aspects } = state
+  const [aspectsState, aspectsDispatch] = useContext(AspectsContext)
+  const { aspects } = aspectsState
+  const [modalState, modalDispatch] = useContext(ModalContext)
 
   const getConsiderations = (type) => {
     let matches = aspects.filter(aspect => aspect.type === type)
@@ -18,14 +20,34 @@ const ConsiderationsContainer = ({ type }) => {
   
   return(
     <View style={styles.container}>
-      <Text style={[theme.fonts.types.subHeading, {
+      <View style={{
+        display: 'flex',
+        flexDirection: 'row', 
+        alignItems: 'center',
         paddingBottom: '4%' 
-      }]}>{type === 'long' ? 'Long Term Considerations' : 'Short Term Considerations'}</Text>
+
+      }}>
+        <Text style={theme.fonts.types.subHeading}>
+          {type === 'long' ? 'Long Term Considerations' : 'Short Term Considerations'}
+        </Text>
+        <TouchableOpacity onPress={() => showAspectsTooltip(modalDispatch)}>
+          <Image 
+            resizeMode="contain"
+            resizeMethod="resize"
+            style={{
+              resizeMode: 'contain',
+              marginLeft: 10,
+              height: 20,
+              width: 20
+            }} source={require('../assets/information.png')} />
+        </TouchableOpacity>
+      </View>
       <ScrollView 
         horizontal={true} 
         showsVerticalScrollIndicator={false} 
         showsHorizontalScrollIndicator={false}
       >
+        <Consideration creator />
         <FlatList 
           contentContainerStyle={{
             height: 140,
