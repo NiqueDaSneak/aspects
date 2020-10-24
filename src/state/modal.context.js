@@ -4,7 +4,8 @@ export const ModalContext = createContext()
 
 const initialState = {
   modalVisible: false,
-  modalType: ''
+  modalType: '',
+  modalData: {},
 }
 
 const reducer = (state, action) => {
@@ -12,7 +13,8 @@ const reducer = (state, action) => {
   case 'OPEN_MODAL':
     return {
       modalActive: true,
-      modalType: action.modalType
+      modalType: action.modalType,
+      modalData: action.modalData
     }
   case 'CLOSE_MODAL':
     return {

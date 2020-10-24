@@ -34,10 +34,10 @@ const AddNewAspect = ({ visible }) => {
   const slideLeft2 = useRef(new Animated.Value(400)).current
 
   useEffect(() => {
-    if (modalState.modalActive) {
+    if (visible) {
       inputRef.current.focus()
     }
-  }, [modalState.modalActive])
+  }, [visible])
 
   useEffect(() => {
     if (questionIndex > 0) {

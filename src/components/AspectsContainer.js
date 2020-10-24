@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Image, StyleSheet, View, Text, FlatList } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from '../assets/utils'
-import Card from './Card'
+import AspectCard from './AspectCard'
 import { AspectsContext, ModalContext } from '../state'
 import PropTypes from 'prop-types'
 import showAspectsTooltip from './Modals/showAspectsTooltip'
@@ -16,19 +16,15 @@ const AspectsContainer = () => {
 
   return(
     <Container modalDispatch={modalDispatch}>
-      <TouchableOpacity on onPress={() => modalDispatch({
-        type: 'OPEN_MODAL',
-        modalType: 'ADD_NEW_ASPECT' 
-      })}>
-        <Card disabled /> 
-      </TouchableOpacity>
+      
+        <AspectCard creator /> 
       <FlatList
         key={aspects.length}        
         keyExtractor={(item, index) => `${index}`}
         numColumns={Math.ceil(aspects.length / 2)}
         data={aspects}
         renderItem={({ item: aspect }) => (
-          <Card data={aspect} />
+          <AspectCard aspect={aspect} />
         )}
       />
     </Container>
@@ -44,8 +40,7 @@ const Container = ({ children, modalDispatch }) => (
       paddingBottom: '4%' 
 
     }}>
-      <Text style={[theme.fonts.types.heading, {
-      }]}>Aspects</Text>
+      <Text style={theme.fonts.types.heading}>Aspects</Text>
       <TouchableOpacity onPress={() => showAspectsTooltip(modalDispatch)}>
         <Image 
           resizeMode="contain"
