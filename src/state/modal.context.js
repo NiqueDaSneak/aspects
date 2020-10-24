@@ -3,19 +3,22 @@ import React, { useReducer, createContext } from 'react'
 export const ModalContext = createContext()
 
 const initialState = {
-  modalActive: false,
-  modalType: ''
+  modalVisible: false,
+  modalType: '',
+  modalData: {},
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
   case 'OPEN_MODAL':
     return {
-      modalActive: true
+      modalActive: true,
+      modalType: action.modalType,
+      modalData: action.modalData
     }
   case 'CLOSE_MODAL':
     return {
-      modalActive: false
+      modalVisible: false
     }
   default:
     throw new Error()

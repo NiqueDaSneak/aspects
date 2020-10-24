@@ -53,8 +53,4 @@ const styles = StyleSheet.create({
   },
 })
 
-// ConsiderationsContainer.propTypes = {
-//   type: PropTypes.string,
-// }
-
 export default ConsiderationsContainer

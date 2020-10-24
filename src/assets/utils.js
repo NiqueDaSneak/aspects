@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import { Keyboard } from 'react-native'
+
 export const theme = {
   layout: {
     flex: {
@@ -26,4 +29,27 @@ export const theme = {
       xlarge: 50
     }
   }
+}
+
+export const useKeyboard = () => {
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
+
+  function onKeyboardWillShow(e) {
+    setKeyboardHeight(e.endCoordinates.height)
+  }
+
+  function onKeyboardWillHide() {
+    setKeyboardHeight(0)
+  }
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardWillShow', onKeyboardWillShow)
+    Keyboard.addListener('keyboardWillHide', onKeyboardWillHide)
+    return () => {
+      Keyboard.removeListener('keyboardWillShow', onKeyboardWillShow)
+      Keyboard.removeListener('keyboardWillHide', onKeyboardWillHide)
+    }
+  }, [])
+
+  return [keyboardHeight]
 }
