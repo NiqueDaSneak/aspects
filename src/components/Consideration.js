@@ -2,35 +2,21 @@ import React, { useContext } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Alert } from 'react-native'
 import { theme } from '../assets/utils'
 import { ModalContext } from '../state'
-
-const Consideration = ({ style, text, creator }) => {
+import showShortTermConsiderationActions from './Modals/showShortTermConsiderationActions'
+const Consideration = ({ style, text, creator, type }) => {
   const [modalState, modalDispatch] = useContext(ModalContext)
-  // const deleteHandler = () => {
-  //   return Alert.alert(
-  //     'Alert Title',
-  //     'My Alert Msg',
-  //     [
-  //       {
-  //         text: 'Cancel',
-  //         onPress: () => console.log('Cancel Pressed'),
-  //         style: 'cancel'
-  //       },
-  //       {
-  //         text: 'OK',
-  //         onPress: () => console.log('OK Pressed') 
-  //       }
-  //     ],
-  //     {
-  //       cancelable: false 
-  //     }
-  //   )
-  // }
+
+  const creatorPressHandler = () => {
+    if (type === 'short') {
+      modalDispatch({
+        type: 'OPEN_MODAL',
+        modalType: 'ADD_SHORT_CONSIDERATION' 
+      })
+    }
+  }
 
   return creator ? (
-    <TouchableOpacity onPress={() => modalDispatch({
-      type: 'OPEN_MODAL',
-      modalType: 'ADD_NEW_ASPECT' 
-    })}>
+    <TouchableOpacity onPress={() => creatorPressHandler()}>
       <View style={{
         ...styles.containerStyle,
         borderStyle: 'dashed',
@@ -50,10 +36,12 @@ const Consideration = ({ style, text, creator }) => {
       </View>
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity onLongPress={() => modalDispatch({
-      type: 'OPEN_MODAL',
-      modalType: '' 
-    })} key={text} style={[styles.containerStyle, style]} onPress={() => console.log('pressed')}>
+    <TouchableOpacity 
+      onPress={() => {
+        showShortTermConsiderationActions()
+      }}
+      key={text} 
+      style={[styles.containerStyle, style]}>
       <View>
         <Text style={styles.taskBtn}>+</Text>
       </View>

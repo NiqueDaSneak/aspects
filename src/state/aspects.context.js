@@ -21,13 +21,13 @@ const initialState = {
       'title': 'Stop watching porn',
       'type': 'short',
       'importanceStatement': 'This is important to me because I want to protect the sanctity of my body and mind, and I want to practice seminal retention.',
-      'considerations': ['Try doing push ups if you catch yourself watching porn'],
+      'considerations': [],
     },
     {
       'title': 'Lack of drive for personal projects',
       'type': 'short',
       'importanceStatement': 'This is important',
-      'considerations': ['What can you do to give yourself some more creative juice?', 'How can you brutally remind yourself of your whys'],
+      'considerations': [],
     },
     {
       'title': 'Financials',
@@ -39,7 +39,7 @@ const initialState = {
       'title': 'Asana Practice',
       'type': 'short',
       'importanceStatement': 'This is important to me because this is something I can give to people, so it needs to be a consistent part of my life. Also the benefits won’t hurt either.',
-      'considerations': ['Do a practice three days in a row.'],
+      'considerations': [],
     },
     {
       'title': 'Developer Career',

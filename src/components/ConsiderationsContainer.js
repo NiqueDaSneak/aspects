@@ -47,7 +47,7 @@ const ConsiderationsContainer = ({ type }) => {
         showsVerticalScrollIndicator={false} 
         showsHorizontalScrollIndicator={false}
       >
-        <Consideration creator />
+        <Consideration creator type={type} />
         <FlatList 
           contentContainerStyle={{
             height: 140,
