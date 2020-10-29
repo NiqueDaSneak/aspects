@@ -6,17 +6,11 @@ import showShortTermConsiderationActions from './Modals/showShortTermConsiderati
 const Consideration = ({ style, text, creator, type }) => {
   const [modalState, modalDispatch] = useContext(ModalContext)
 
-  const creatorPressHandler = () => {
-    if (type === 'short') {
-      modalDispatch({
-        type: 'OPEN_MODAL',
-        modalType: 'ADD_SHORT_CONSIDERATION' 
-      })
-    }
-  }
-
   return creator ? (
-    <TouchableOpacity onPress={() => creatorPressHandler()}>
+    <TouchableOpacity onPress={() => modalDispatch({
+      type: 'OPEN_MODAL',
+      modalType: type === 'short' ? 'ADD_SHORT_CONSIDERATION' : 'ADD_LONG_CONSIDERATION' 
+    })}>
       <View style={{
         ...styles.containerStyle,
         borderStyle: 'dashed',

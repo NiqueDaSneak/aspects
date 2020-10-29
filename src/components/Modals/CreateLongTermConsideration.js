@@ -18,20 +18,18 @@ import { theme, useKeyboard } from '../../assets/utils'
 import { AspectsContext, ModalContext } from '../../state'
 import { ConsiderationContext } from '../../state/considerations.context'
 
-const CreateShortTermConsideration = ({ visible }) => {
+const CreateLongTermConsideration = ({ visible }) => {
   const [modalState, modalDispatch] = useContext(ModalContext)
   const [considerationState, considerationDispatch] = useContext(ConsiderationContext)
   const [keyboardHeight] = useKeyboard()
   const [aspectState, aspectsDispatch] = useContext(AspectsContext)
   const { aspects } = aspectState
-  const [considerationTitle, setConsiderationTitle] = useState('Useless Placeholder')
+  const [considerationText, setConsiderationText] = useState('Useless Placeholder')
   const [questionIndex, setQuestionIndex] = useState(0)
-  const [importance, setImportance] = useState('')
   const [aspectPicker, setAspectPicker] = useState('No')
   const inputRef = useRef()
   const slideLeft = useRef(new Animated.Value(0)).current
   const slideLeft2 = useRef(new Animated.Value(400)).current
-  const slideLeft3 = useRef(new Animated.Value(400)).current
 
   
   useEffect(() => {
@@ -57,29 +55,12 @@ const CreateShortTermConsideration = ({ visible }) => {
         easing: Easing.ease,
       }).start()
     }
-    // move on to the last question
-    if (questionIndex === 2) {
-      Animated.timing(slideLeft2, {
-        toValue: -400,
-        duration: 300,
-        useNativeDriver: false,
-        easing: Easing.ease,
-      }).start()
-      
-      Animated.timing(slideLeft3, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: false,
-        easing: Easing.ease,
-      }).start()
-    }
   }, [questionIndex])
   
   const submitNewConsideration = () => {
     let newConsideration = {
-      title: considerationTitle,
-      importanceStatement: importance,
-      type: 'short',
+      title: considerationText,
+      type: 'long',
       aspect: aspectPicker
     }
     console.log(newConsideration)
@@ -117,64 +98,34 @@ const CreateShortTermConsideration = ({ visible }) => {
             color: 'white',
             width: '80%',
             marginBottom: '2%', 
-          }}>What is one specific thing you need to do now to either create or sustain your vision? </Text>
-          <Text style={{
-            fontSize: theme.fonts.sizes.small,
-            color: 'white',
-            width: '80%',
-            marginBottom: '4%', 
-          }}>Put another way; What is a step I can take to overcome an obstacle I'm facing</Text>
+          }}>{'What are the things you\'ve been wondering about, questioning or confused about? What isn\'t very clear about the future and how you see yourself in it? What questions have no answers yet?'}</Text>
           <TextInput
             ref={inputRef}
             blurOnSubmit
             maxLength={41}
             keyboardAppearance={'dark'}
             returnKeyType={'next'}          
-            // style={styles.titleInput}
             multiline={true}
             numberOfLines={4}
             style={styles.importanceInput}
-            onChangeText={text => setConsiderationTitle(text)}
+            onChangeText={text => setConsiderationText(text)}
             placeholder="Useless Placeholder"
-            onSubmitEditing={() => setQuestionIndex(questionIndex + 1)}
-          /> 
-          <Button color="green" title="Next" onPress={() => setQuestionIndex(questionIndex + 1)} />
-        </Animated.View>
-        <Animated.View 
-          style={[styles.importanceContainer, {
-            bottom: keyboardHeight + 30,
-            left: slideLeft2,
-          }]}>
-          <Text style={{
-            fontSize: theme.fonts.sizes.medium,
-            marginBottom: '4%', 
-            color: 'white',
-            width: '80%'
-          }}>Why is this important to you?</Text>
-          <TextInput
-            keyboardAppearance={'dark'}
-            blurOnSubmit
-            returnKeyType={'done'}         
-            multiline={true}
-            numberOfLines={4}
-            style={styles.importanceInput}
-            onChangeText={text => setImportance(text)}
             onSubmitEditing={() => {
               setQuestionIndex(questionIndex + 1)
               Keyboard.dismiss()
             }
             }
-          />
+          /> 
           <Button color="green" title="Next" onPress={() => {
             setQuestionIndex(questionIndex + 1)
             Keyboard.dismiss()
-          } 
+          }
           } />
         </Animated.View>
         <Animated.View 
           style={[styles.importanceContainer, {
             bottom: keyboardHeight,
-            left: slideLeft3,
+            left: slideLeft2,
           }]}>
           <View style={{
             position: 'absolute',
@@ -249,4 +200,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CreateShortTermConsideration
+export default CreateLongTermConsideration
